@@ -74,14 +74,32 @@ foreach ($name in $serviceNames) {
     }
 
     # --- 2. 無効化 ---
-    # Per-User Service はテンプレートキーの Start を書き換える必要があるため、
-    # 通常サービスも含めレジストリ(Start=4=無効)で統一的に無効化する
+    # 通常サービスは SCM 経由(Set-Service)で無効化する。
+    # レジストリ直接書き込みだと、キーが TrustedInstaller 保護されているサービス
+    # (TrkWks 等)で管理者でもアクセス拒否されるため。
+    # Per-User Service はテンプレートが SCM で構成変更できないため、
+    # テンプレートキーの Start=4 をレジストリで書き換える。
+    $isPerUser = $name.EndsWith("_*")
     $regPath = "HKLM:\SYSTEM\CurrentControlSet\Services\$baseName"
-    if (Test-Path $regPath) {
-        Set-ItemProperty -Path $regPath -Name "Start" -Value 4 -Type DWord
+    $disabled = $false
+    if (-not $isPerUser) {
+        try {
+            Set-Service -Name $baseName -StartupType Disabled -ErrorAction Stop
+            $disabled = $true
+        } catch {
+            # SCM で拒否された場合はレジストリを試す
+        }
+    }
+    if (-not $disabled) {
+        try {
+            Set-ItemProperty -Path $regPath -Name "Start" -Value 4 -Type DWord -ErrorAction Stop
+            $disabled = $true
+        } catch {
+            Write-Warning "[$baseName] 無効化できませんでした: $($_.Exception.Message)"
+        }
+    }
+    if ($disabled) {
         Write-Host "[$baseName] 無効化しました。" -ForegroundColor Green
-    } else {
-        Write-Warning "[$baseName] レジストリキーが見つからないため無効化できませんでした。"
     }
 }
 
