@@ -21,6 +21,7 @@
 #   PushToInstall        Storeのリモートインストール (他デバイスからのアプリプッシュ)
 #   PeerDistSvc          BranchCache (企業向けキャッシュ共有)
 #   SNMPTrap             SNMPトラップ受信
+#   SysMain              旧Superfetch (アプリ先読みキャッシュ。戻すには Enable-Sysmain.ps1)
 #
 # 「_*」付きのサービス(CDPUserSvc_* 等)はユーザーごとに実体が作られる Per-User Service で、
 # Set-Service では無効化できないため、レジストリのテンプレートキー(Start=4)で無効化します。
@@ -55,6 +56,7 @@ $serviceNames = @(
     "PushToInstall"
     "PeerDistSvc"
     "SNMPTrap"
+    "SysMain"
 )
 
 foreach ($name in $serviceNames) {
