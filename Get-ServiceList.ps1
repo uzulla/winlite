@@ -1,5 +1,5 @@
 # 全サービスの一覧を取得し、名前・表示名・状態・スタートアップ設定をタブ区切りで出力する
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Get-ServiceList.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Get-ServiceList.ps1
 #         ファイルに保存する場合: .\Get-ServiceList.ps1 > services.tsv
 
 "Name`tDisplayName`tState`tStartMode"

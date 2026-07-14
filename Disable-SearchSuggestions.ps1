@@ -1,7 +1,7 @@
 # スタートメニュー検索でのBing/クラウド検索連携を無効化するスクリプト
 # ローカル検索のみを行い、ネットから結果を拾ってこないようにします。
 #
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Disable-SearchSuggestions.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Disable-SearchSuggestions.ps1
 
 Write-Host "検索ボックスのサジェスト・Bing連携を無効化しています..." -ForegroundColor Cyan
 

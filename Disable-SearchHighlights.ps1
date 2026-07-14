@@ -3,7 +3,7 @@
 #  検索のハイライトを表示する」をオフにするのと同等です。
 #
 # 管理者権限は不要(現在のユーザーの設定のみ変更します)。
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Disable-SearchHighlights.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Disable-SearchHighlights.ps1
 
 Write-Host "検索のハイライトを無効化しています..." -ForegroundColor Cyan
 

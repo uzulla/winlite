@@ -2,7 +2,7 @@
 # レイアウトを「さらにピン留めを表示する」にして無駄な余白を減らすスクリプト
 #
 # 管理者権限は不要(現在のユーザーの設定のみ変更します)。
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Disable-StartMenuRecommendations.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Disable-StartMenuRecommendations.ps1
 
 Write-Host "スタートメニューの「おすすめ」表示を無効化しています..." -ForegroundColor Cyan
 

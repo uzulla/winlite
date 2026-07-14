@@ -7,7 +7,7 @@
 #       丸ごとオフにすることで、実質的に同じ(背景負荷が減る)状態にします。
 #
 # 管理者権限は不要(現在のユーザーの設定のみ変更します)。
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Disable-EdgeNewsFeed.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Disable-EdgeNewsFeed.ps1
 
 Write-Host "Microsoft Edge の新しいタブのコンテンツ(ニュース)を無効化しています..." -ForegroundColor Cyan
 

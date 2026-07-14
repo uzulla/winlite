@@ -6,7 +6,7 @@
 #   4. ウィジェット機能の無効化・アプリ削除
 #
 # 要管理者権限。
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Optimize-PC.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Optimize-PC.ps1
 #
 # 注意: いずれも元に戻すには個別に再インストール・設定変更が必要です。
 #       内容を確認の上、必要な項目だけ残して実行することをおすすめします。

@@ -3,7 +3,7 @@
 # ・C:ドライブの「このドライブのファイルにインデックスを付ける」を無効化
 #
 # 要管理者権限。
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Disable-SearchIndexing.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Disable-SearchIndexing.ps1
 
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Warning "このスクリプトは管理者権限で実行してください。"

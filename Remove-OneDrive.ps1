@@ -2,7 +2,7 @@
 # 実行には管理者権限は不要(ユーザーごとのインストールのため)だが、
 # 全ユーザー分のクリーンアップまで行う場合は管理者権限で実行してください。
 #
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Remove-OneDrive.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Remove-OneDrive.ps1
 #
 # 注意: この操作は元に戻せません。再度使いたくなった場合は
 #       https://www.microsoft.com/ja-jp/microsoft-365/onedrive/download から再インストールしてください。

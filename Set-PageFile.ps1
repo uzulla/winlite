@@ -4,9 +4,9 @@
 #
 # 要管理者権限。設定変更後は再起動が必要です。
 #
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Set-PageFile.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Set-PageFile.ps1
 
-$FixedSizeMB = 4096  # 4GB固定
+$FixedSizeMB = [UInt32]4096  # 4GB固定 (Win32_PageFileSettingのサイズはUInt32型)
 
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Warning "このスクリプトは管理者権限で実行してください。"
@@ -26,7 +26,7 @@ if ($computerSystem.AutomaticManagedPagefile) {
 $pageFileName = "$($env:SystemDrive)\pagefile.sys"
 Write-Host "C:ドライブのページングファイルを固定サイズ ${FixedSizeMB}MB に設定しています..." -ForegroundColor Cyan
 
-$pageFile = Get-CimInstance -ClassName Win32_PageFileSetting -Filter "Name='$($pageFileName -replace '\\', '\\\\')'"
+$pageFile = Get-CimInstance -ClassName Win32_PageFileSetting -Filter "Name='$($pageFileName.Replace('\', '\\'))'"
 
 if ($pageFile) {
     Set-CimInstance -InputObject $pageFile -Property @{

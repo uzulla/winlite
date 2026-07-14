@@ -8,7 +8,7 @@
 #       「設定 > 個人用設定 > ロック画面 > ロック画面の状態」から手動で「なし」を選択してください。
 #
 # 管理者権限は不要(現在のユーザーの設定のみ変更します)。
-# 使い方: powershell -ExecutionPolicy Bypass -File .\Disable-LockScreenTips.ps1
+# 使い方: pwsh -ExecutionPolicy Bypass -File .\Disable-LockScreenTips.ps1
 
 Write-Host "ロック画面の豆知識・ヒント表示を無効化しています..." -ForegroundColor Cyan
 
