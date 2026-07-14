@@ -33,6 +33,11 @@ Get-AppxPackage -AllUsers -Name $widgetPackageName -ErrorAction SilentlyContinue
     Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
 
 # 新規ユーザーにも入らないようプロビジョニングパッケージを解除
+# Dismモジュール(Get-AppxProvisionedPackage)は PowerShell 7 から直接呼ぶと
+# 「クラスが登録されていません」エラーになるため、Windows PowerShell 互換モードで読み込む
+if ($PSVersionTable.PSEdition -eq "Core") {
+    Import-Module Dism -UseWindowsPowerShell -WarningAction SilentlyContinue
+}
 Get-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue |
     Where-Object { $_.DisplayName -eq $widgetPackageName } |
     ForEach-Object {

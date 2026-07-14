@@ -21,6 +21,13 @@ Get-AppxPackage -AllUsers -Name $cortanaName -ErrorAction SilentlyContinue |
 
 # --- 2. 新規ユーザーにも入らないようプロビジョニングパッケージを解除 ---
 Write-Host "プロビジョニングパッケージを解除しています..." -ForegroundColor Cyan
+
+# Dismモジュール(Get-AppxProvisionedPackage)は PowerShell 7 から直接呼ぶと
+# 「クラスが登録されていません」エラーになるため、Windows PowerShell 互換モードで読み込む
+if ($PSVersionTable.PSEdition -eq "Core") {
+    Import-Module Dism -UseWindowsPowerShell -WarningAction SilentlyContinue
+}
+
 Get-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue |
     Where-Object { $_.DisplayName -eq $cortanaName } |
     ForEach-Object {
