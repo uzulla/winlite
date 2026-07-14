@@ -5,6 +5,10 @@
 文字化けの問題が発生するのでPowerShell 7以降で実行してください。
 
 ```
+pwsh -ExecutionPolicy Bypass -File .\Some.ps1
+```
+
+```
 # required
 winget install Microsoft.PowerShell
 
